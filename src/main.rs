@@ -1,14 +1,14 @@
-use std::{env, fs::File};
+use std::{env, fs::File, io::BufWriter};
 
 mod lib;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
 
-    let dictionary = lib::create_dictionary(args[1].parse().expect("Invalid depth"));
+    let library = lib::create_library(args[1].parse().expect("Invalid depth"));
     let file = File::create("library.json").unwrap();
 
-    lib::write_dictionary(dictionary, file);
+    serde_json::to_writer(BufWriter::new(file), &library).unwrap();
 
     println!("Done!");
 }
