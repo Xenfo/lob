@@ -11,7 +11,7 @@ pub fn create_library(depth: u32) -> Vec<Entry> {
 		(b'a'..=b'z')
 			.chain(b'A'..=b'Z')
 			.chain(b'0'..=b'9')
-			.chain(vec![b' ', b'.', b'!', b'?', b'-'])
+			.chain(vec![b' ', b'-'])
 			.collect(),
 	)
 	.unwrap();
